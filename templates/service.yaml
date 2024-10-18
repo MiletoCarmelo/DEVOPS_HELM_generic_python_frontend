@@ -13,3 +13,4 @@ spec:
       name: http
   selector:
     app: {{.Values.module}}-pods
+    #app: {{ .Values.module }}-dynamic  # Ajustez pour pointer vers les pods dynamiques

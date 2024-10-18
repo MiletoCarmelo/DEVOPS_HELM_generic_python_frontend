@@ -39,4 +39,9 @@ ingress:
     pathType: Prefix
 
 
-  
+dynamicPod:
+  instanceSuffix: "1"  # Changez ceci pour générer des noms uniques pour vos pods
+
+podManager:
+  image: your-docker-repo/manage-pods  # Remplacez par le nom de votre image
+  tag: latest  # Ou un tag spécifique si nécessaire
