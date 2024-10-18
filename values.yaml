@@ -10,10 +10,10 @@ containers:
     containerPort: 80
   resources:
     requests:
-      memory: "104Mi"  # Updated memory request
+      memory: "512Mi"  # Updated memory request
       cpu: "200m"
     limits:
-      memory: "128Mi"  # Updated memory limit
+      memory: "1024Mi"  # Updated memory limit
       cpu: "200m"
 
 service:

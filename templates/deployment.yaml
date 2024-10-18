@@ -8,13 +8,13 @@ spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: {{.Values.module}}-pods
+      app: {{ .Values.module }}-pods
   template:
     metadata:
       labels:
-        app: {{.Values.module}}-pods
+        app: {{ .Values.module }}-pods
     spec:
-{{- if .Values.technicalSecret}}
+{{- if .Values.technicalSecret }}
       imagePullSecrets:
         - name: technical-secret
 {{- end}}
@@ -28,7 +28,7 @@ spec:
 {{- end}}
           ports:
             - name: http
-              containerPort: {{ .Values.containers.ports.containerPort }}
+              containerPort: {{ .Values.containers.ports.containerPort }} # Cela doit être le port que votre app écoute
           resources:
             requests:
               memory: {{ .Values.containers.resources.requests.memory }}
