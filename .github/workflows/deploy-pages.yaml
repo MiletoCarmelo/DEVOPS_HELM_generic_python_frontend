@@ -7,6 +7,9 @@ on:
 env:
   BRANCH_PAGES: github-pages
 
+permissions:
+  contents: write
+
 jobs:
   release-chart:
     runs-on: ubuntu-latest
