@@ -8,9 +8,7 @@ env:
   BRANCH_PAGES: github-pages
 
 permissions:
-  contents:
-    write: true 
-    read: true
+  contents: write, read
 
 jobs:
   release-chart:
