@@ -10,12 +10,11 @@ containers:
     containerPort: 80
   resources:
     requests:
-      memory: "50Mi"
+      memory: "104Mi"  # Updated memory request
       cpu: "200m"
     limits:
-      memory: "50Mi"
+      memory: "128Mi"  # Updated memory limit
       cpu: "200m"
-
 
 service:
    port: 8080 # doit etre identique à celui contenu dans le fichier service.yaml
