@@ -1,0 +1,39 @@
+module: dev-tradingstrategyanalysis-v1
+
+replicas: 1
+
+image:
+  repository: ghcr.io/miletocarmelo/tradingstrategyanalysis
+  tag: latest  # Changé de v0.3.0 à latest
+  pullPolicy: IfNotPresent
+
+containers:
+  name: frontend
+  ports:
+    containerPort: 80
+
+resources:
+  requests:
+    memory: "50Mi"
+    cpu: "200m"
+  limits:
+    memory: "50Mi"
+    cpu: "200m"
+
+service:
+   port: 8080 # doit etre identique à celui contenu dans le fichier service.yaml
+
+ingress:
+  enable: true
+  metadata:
+    annotations:
+      pathRewrite: /
+      # Ajoutez d'autres annotations si nécessaire
+  host: # Laissez vide ou spécifiez un nom d'hôte
+  tls:
+    enabled: false
+    annotations:
+      # cert-manager.io/cluster-issuer: nameOfClusterIssuer
+  spec:
+    path: /
+    pathType: Prefix
