@@ -3,12 +3,12 @@ entries:
   generic-python-frontend:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-10-18T19:52:08.075087465Z"
+    created: "2024-10-18T20:49:35.791574252Z"
     description: A Helm chart for Kubernetes - Generic python frontend
-    digest: 7f29421e55c0ab81c780e088c7aceec84885b799e1e98bd7b695f3b269866308
+    digest: 363ca426fc416d47561cdb78eb0a9f193bf82da22658562e58ee6a28dcf7fdca
     name: generic-python-frontend
     type: application
     urls:
     - https://raw.githubusercontent.com/MiletoCarmelo/DEVOPS_HELM_generic_python_frontend/github-pages/generic-python-frontend-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-18T19:52:08.073928451Z"
+generated: "2024-10-18T20:49:35.790972034Z"
