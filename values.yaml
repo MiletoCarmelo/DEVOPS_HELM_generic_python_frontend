@@ -17,7 +17,7 @@ containers:
       cpu: "200m"
 
 service:
-   port: 8080 # doit etre identique à celui contenu dans le fichier service.yaml
+   port: 80 # doit etre identique à celui contenu dans le fichier service.yaml
 
 ingress:
   enable: true
