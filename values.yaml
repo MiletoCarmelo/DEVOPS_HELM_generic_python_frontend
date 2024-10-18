@@ -28,6 +28,11 @@ ingress:
 #    annotations:
 #      cert-manager.io/cluster-issuer: nameOfClusterIssuer
 #  host: myhost
+  hosts:
+    - host: myhost  # Change to your desired host
+      paths:
+        - path: /
+          pathType: Prefix
 
   spec:
     path: /
