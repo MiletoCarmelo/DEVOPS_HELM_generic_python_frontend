@@ -4,21 +4,39 @@ on:
   push:
     branches: 
       - main
+
+env:
+  REGISTRY_NAME: ghcr.io
+  REGISTRY_USERNAME: ${{ github.actor }}
+  REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+  IMAGE_NAME: ${{ github.repository }}  # This will be in the format "owner/repo"
+  IMAGE_TAG: latest
+
+permissions:
+  contents: read  # Allows reading files from the repository
+  packages: write  # Allows pushing images to the GitHub Container Registry
+
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Pull main branch
+      run: git pull origin main
 
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+      uses: docker/setup-buildx-action@v3
 
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1 
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v3
       with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ${{ env.REGISTRY_NAME }}
+        username: ${{ env.REGISTRY_USERNAME }}
+        password: ${{ env.REGISTRY_PASSWORD }}
 
     - name: Check for dev changes
       id: check_dev
@@ -29,12 +47,13 @@ jobs:
 
     - name: Build and push dev image
       if: steps.check_dev.outputs.changed == 'true'
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v6
       with:
         context: ./charts/dev/scripts
         file: ./charts/dev/scripts/Dockerfile
         push: true
         tags: ghcr.io/${{ github.repository_owner }}/build-push-image-pods-management-dev:latest
+        tags: ${{ env.REGISTRY_NAME }}/build-push-image-pods-management-dev:latest
 
     - name: Update dev Kubernetes resources
       if: steps.check_dev.outputs.changed == 'true'
