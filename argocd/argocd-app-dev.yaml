@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/MiletoCarmelo/DEVOPS_HELM_generic_python_frontend
-    targetRevision: HEAD
+    targetRevision: main
     path: .
     helm:
       valueFiles:
