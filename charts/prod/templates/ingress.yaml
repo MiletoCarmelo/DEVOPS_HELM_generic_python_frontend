@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "label-generator" . | nindent 4 }}
   annotations:
-    {{- with .Values.ingress.metadata.annotations }}
+    {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
     {{- if .Values.ingress.tls }}
@@ -27,14 +27,14 @@ spec:
       {{- end }}
       http:
         paths:
-          - path: {{ .Values.ingress.spec.path }}
-            pathType: {{ .Values.ingress.spec.pathType }}
+          - path: {{ .Values.ingress.path }}
+            pathType: {{ .Values.ingress.pathType }}
             backend:
               service:
                 name: {{ .Values.module }}-service
                 port: 
-                  {{- if .Values.ingress.spec.servicePort }}
-                  number: {{ .Values.ingress.spec.servicePort }}
+                  {{- if .Values.ingress.servicePort }}
+                  number: {{ .Values.ingress.servicePort }}
                   {{- else }}
                   name: http
                   {{- end }}
