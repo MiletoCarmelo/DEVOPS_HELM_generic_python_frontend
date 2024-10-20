@@ -1,4 +1,4 @@
-trading-strategy-analysis-prod:
-  enabled: true
-trading-strategy-analysis-dev:
+dev:
   enabled: false
+prod:
+  enabled: true

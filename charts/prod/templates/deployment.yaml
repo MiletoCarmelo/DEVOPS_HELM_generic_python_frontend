@@ -10,10 +10,12 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.module }}-pods
+      env: {{ .Values.environment }}
   template:
     metadata:
       labels:
         app: {{ .Values.module }}-pods
+        env: {{ .Values.environment }}
     spec:
 {{- if .Values.technicalSecret }}
       imagePullSecrets:
