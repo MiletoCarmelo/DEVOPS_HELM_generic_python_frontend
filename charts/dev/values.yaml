@@ -1,5 +1,9 @@
 module: trading-strategy-analysis-dev
 
+dev:
+  enabled: true
+prod:
+  enabled: false
 
 environment: dev  # Default to dev, override in values-prod.yaml
 

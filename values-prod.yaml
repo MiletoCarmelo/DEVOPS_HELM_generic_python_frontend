@@ -1,4 +1,0 @@
-dev:
-  enabled: false
-prod:
-  enabled: true
