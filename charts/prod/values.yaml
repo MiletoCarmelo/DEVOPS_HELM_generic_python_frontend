@@ -37,3 +37,11 @@ ingress:
   spec:
     path: /
     pathType: Prefix
+
+
+# dynamicPod:
+#   instanceSuffix: "1"  # Changez ceci pour générer des noms uniques pour vos pods
+
+# podManager:
+#      image: ghcr.io/MiletoCarmelo/build-push-image-pods-management-prod
+#      tag: latest
