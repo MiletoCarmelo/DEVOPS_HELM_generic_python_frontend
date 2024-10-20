@@ -45,8 +45,8 @@ jobs:
     - name: Build and push dev image
       uses: docker/build-push-action@v6
       with:
-        context: ./charts/dev/scripts
-        file: ./charts/dev/scripts/Dockerfile
+        context: ./scripts
+        file: ./scripts/Dockerfile
         push: true
         tags: ${{ env.REGISTRY_NAME }}/${{ env.IMAGE_NAME_LOWER }}:${{ env.IMAGE_TAG }}
 
