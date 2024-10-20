@@ -3,7 +3,7 @@ module: tradingstrategyanalysis-dev
 replicas: 1
 
 containers:
-  image: ghcr.io/miletocarmelo/devops_helm_generic_python_frontend/build-push-image-pods-management-dev:latest
+  image: ghcr.io/miletocarmelo/pods-manager-dev:latest
   name: frontend
   tags: latest
   ports:
@@ -43,5 +43,5 @@ dynamicPod:
   instanceSuffix: "1"  # Changez ceci pour générer des noms uniques pour vos pods
 
 podManager:
-     image: ghcr.io/miletocarmelo/devops_helm_generic_python_frontend/build-push-image-pods-management-dev:latest
+     image: ghcr.io/miletocarmelo/pods-manager-dev:latest
      tag: latest
