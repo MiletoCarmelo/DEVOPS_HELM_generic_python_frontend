@@ -33,5 +33,11 @@ argocd login --insecure --username admin --password Admin123 --grpc-web $BASE_HO
 kubectl create namespace dev
 kubectl create namespace prod
 
+
+# apply to dev and prod env :
+kubectl apply -f argocd/argocd-app-dev.yaml
+kubectl apply -f argocd/argocd-app-prod.yaml
+
 # create app for dev and prod env :
 argocd app set argocd/trading-strategy-analysis-dev 
+argocd app set argocd/trading-strategy-analysis-prod

@@ -1,2 +1,4 @@
-trading-strategy-anaylsis-dev:
+trading-strategy-analysis-dev:
   enabled: true
+trading-strategy-analysis-prod:
+  enabled: false
