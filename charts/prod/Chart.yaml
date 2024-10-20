@@ -1,5 +1,5 @@
 apiVersion: v2
-name: generic-python-frontend-prod
+name: trading-strategy-analysis-prod
 description: A Helm chart for Kubernetes - Generic python frontend
 
 # A chart can be either an 'application' or a 'library' chart.

@@ -1,4 +1,4 @@
-module: tradingstrategyanalysis-prod
+module: trading-strategy-analysis-prod
 
 replicas: 1
 
