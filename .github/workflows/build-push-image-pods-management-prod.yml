@@ -3,7 +3,7 @@ name: Pods Management Images - Prod
 on:
   push:
     branches: 
-      - main
+      - prod
 
 env:
   REGISTRY_NAME: ghcr.io
@@ -25,8 +25,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Pull main branch
-      run: git pull origin main
+    - name: Pull prod branch
+      run: git pull origin prod
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3

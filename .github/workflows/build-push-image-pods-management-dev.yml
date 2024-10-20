@@ -70,6 +70,8 @@ jobs:
         git add charts/dev/values.yaml 
         git commit -m "Update image tags for pods management" || echo "No changes to commit"
           
-    - name: Push to dev
-      run: |
-        git push origin HEAD:main
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.PAT }}
+        branch: ${{ github.ref }}
