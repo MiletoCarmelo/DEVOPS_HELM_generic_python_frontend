@@ -52,6 +52,6 @@ jobs:
         git add charts/dev/values.yaml 
         git commit -m "Update image tags for pods management" || echo "No changes to commit"
           
-      - name: Push to prod
+    - name: Push to dev
       run: |
         git push
