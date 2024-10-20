@@ -5,6 +5,8 @@ environment: prod  # Default to prod, override in values-prod.yaml
 replicas: 1
 # if set to 0 , the pod will not be created during the deployment
 
+technicalSecret: true
+
 containers:
   image: ghcr.io/miletocarmelo/pods-manager-prod
   name: frontend
@@ -21,16 +23,18 @@ containers:
 
 service:
    port: 80 # doit etre identique à celui contenu dans le fichier service.yaml
+            # Optional, will use named port "http" if not specified
 
 ingress:
   enable: true
   metadata:
     annotations:
       pathRewrite: /
-#  tls:
-#    annotations:
-#      cert-manager.io/cluster-issuer: nameOfClusterIssuer
-#  host: myhost
+  tls:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+
   hosts:
     - host: myhost  # Change to your desired host
       paths:
