@@ -5,4 +5,5 @@ COPY manage_pods.py .
 
 RUN pip install kubernetes
 
+# Run the manage_pods.py script
 CMD ["python", "manage_pods.py"]
