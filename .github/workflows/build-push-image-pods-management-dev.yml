@@ -35,11 +35,11 @@ jobs:
         fi
 
     - name: Set up Docker Buildx
-      if: steps.check_prod.outputs.changed == 'true'
+      if: steps.check_dev.outputs.changed == 'true'
       uses: docker/setup-buildx-action@v3
 
     - name: Log in to GitHub Container Registry
-      if: steps.check_prod.outputs.changed == 'true'
+      if: steps.check_dev.outputs.changed == 'true'
       uses: docker/login-action@v3
       with:
         registry: ${{ env.REGISTRY_NAME }}
@@ -47,7 +47,7 @@ jobs:
         password: ${{ env.REGISTRY_PASSWORD }}
 
     - name: Build and push dev image
-      if: steps.check_prod.outputs.changed == 'true'
+      if: steps.check_dev.outputs.changed == 'true'
       uses: docker/build-push-action@v6
       with:
         context: ./charts/dev/scripts
@@ -56,24 +56,24 @@ jobs:
         tags: ${{ env.REGISTRY_NAME }}/${{ env.IMAGE_NAME }}/:${{ env.IMAGE_TAG }}
 
     - name: Update dev Kubernetes resources
-      if: steps.check_prod.outputs.changed == 'true'
+      if: steps.check_dev.outputs.changed == 'true'
       run: |
         sed -i 's|image:.*|image: ${{ env.REGISTRY_NAME }}/${{ env.IMAGE_NAME }}/:${{ env.IMAGE_TAG }}|' charts/dev/values.yaml
         sed -i 's|tag:.*|tag: latest|' charts/dev/values.yaml
 
     - name: Set user for git
-      if: steps.check_prod.outputs.changed == 'true'
+      if: steps.check_dev.outputs.changed == 'true'
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
 
     - name: Commit
-      if: steps.check_prod.outputs.changed == 'true'
+      if: steps.check_dev.outputs.changed == 'true'
       run: |
         git add charts/dev/values.yaml 
         git commit -m "Update image tags for pods management" || echo "No changes to commit"
           
     - name: Push to main
-      if: steps.check_prod.outputs.changed == 'true'
+      if: steps.check_dev.outputs.changed == 'true'
       run: |
         git push origin HEAD:main
