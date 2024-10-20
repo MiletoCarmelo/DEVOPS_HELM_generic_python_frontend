@@ -1,4 +1,4 @@
-name: Pods Management Images - Dev
+name: Pods Manager Images
 
 on:
   push:
