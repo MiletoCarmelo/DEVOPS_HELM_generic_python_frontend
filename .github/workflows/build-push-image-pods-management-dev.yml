@@ -52,8 +52,8 @@ jobs:
 
     - name: Update dev Kubernetes resources
       run: |
-        sed -i 's|image:.*|image: ${{ env.REGISTRY_NAME }}/${{ env.IMAGE_NAME_LOWER }}:${{ env.IMAGE_TAG }}|' charts/dev/values.yaml
-        sed -i 's|tag:.*|tag: latest|' charts/dev/values.yaml
+        sed -i 's|image:.*|image: ${{ env.REGISTRY_NAME }}/${{ env.IMAGE_NAME_LOWER }}}|' charts/dev/values.yaml
+        sed -i 's|tag:.*|tag: ${{ env.IMAGE_TAG }|' charts/dev/values.yaml
 
     - name: Set user for git
       run: |

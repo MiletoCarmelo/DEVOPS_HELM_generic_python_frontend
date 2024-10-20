@@ -52,8 +52,8 @@ jobs:
 
     - name: Update prod Kubernetes resources
       run: |
-        sed -i 's|image:.*|image: ${{ env.REGISTRY_NAME }}/${{ env.IMAGE_NAME_LOWER }}:${{ env.IMAGE_TAG }}|' charts/prod/values.yaml
-        sed -i 's|tag:.*|tag: latest|' charts/prod/values.yaml
+        sed -i 's|image:.*|image: ${{ env.REGISTRY_NAME }}/${{ env.IMAGE_NAME_LOWER }}|' charts/prod/values.yaml
+        sed -i 's|tag:.*|tag: ${{ env.IMAGE_TAG }|' charts/prod/values.yaml
 
     - name: Set user for git
       run: |

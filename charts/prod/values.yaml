@@ -3,7 +3,7 @@ module: trading-strategy-analysis-prod
 replicas: 1
 
 containers:
-  image: ghcr.io/miletocarmelo/tradingstrategyanalysis
+  image: ghcr.io/miletocarmelo/pods-manager-pro:latest
   name: frontend
   tags: latest
   ports:
