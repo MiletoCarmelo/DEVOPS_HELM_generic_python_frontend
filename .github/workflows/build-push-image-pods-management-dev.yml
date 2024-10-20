@@ -30,8 +30,8 @@ jobs:
     - name: Check for dev changes
       id: check_dev
       run: |
-        if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q "^charts/dev/"; then
-          echo "::set-output name=changed::true"
+        if git diff --name-only ${{ env.LAST_COMMIT }} ${{ github.sha }} | grep -q "^charts/dev/"; then
+          echo "changed=true" >> $GITHUB_OUTPUT
         fi
 
     - name: Set up Docker Buildx
