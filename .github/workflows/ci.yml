@@ -6,6 +6,7 @@ on:
       - main
 
 env:
+  BRANCH_PAGES: github-pages
   REGISTRY_NAME: ghcr.io
   REGISTRY_USERNAME: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
@@ -18,7 +19,7 @@ permissions:
   packages: write  # Allows pushing images to the GitHub Container Registry
 
 jobs:
-  build-and-push:
+  build-and-push-pods-manager-image:
     runs-on: ubuntu-latest
     steps:
 
@@ -74,3 +75,16 @@ jobs:
     - name: Push to main
       run: |
         git push origin HEAD:main
+
+  release-chart:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Publish Helm chart
+        uses: stefanprodan/helm-gh-pages@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          charts_dir: ..
+          branch: ${{ env.BRANCH_PAGES }}
+          charts_url: https://raw.githubusercontent.com/${{ github.repository }}/${{ env.BRANCH_PAGES }}
+
