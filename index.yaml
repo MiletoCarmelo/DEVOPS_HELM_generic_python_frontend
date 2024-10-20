@@ -21,7 +21,7 @@ entries:
   trading-strategy-analysis:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2024-10-20T15:58:35.216793447Z"
+    created: "2024-10-20T16:02:42.055111585Z"
     dependencies:
     - name: dev
       repository: file://charts/dev
@@ -30,10 +30,10 @@ entries:
       repository: file://charts/prod
       version: 0.1.0
     description: A Helm chart for managing dev and prod environments.
-    digest: 1fec6d4a2ee24d2e6be991a339914b619ab4be2cf8259fcf4613f2ba9acc819b
+    digest: 5598c1c2347e03b1819a252d952ddd24eb32a2d523fb8dddf25e7f39af917884
     name: trading-strategy-analysis
     type: application
     urls:
     - https://raw.githubusercontent.com/MiletoCarmelo/DEVOPS_HELM_generic_python_frontend/github-pages/trading-strategy-analysis-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-20T15:58:35.214789011Z"
+generated: "2024-10-20T16:02:42.053716359Z"
