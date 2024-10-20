@@ -1,3 +1,4 @@
+{{- if eq .Values.environment .Chart.Name }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -36,5 +37,4 @@ spec:
             limits:
               memory: {{ .Values.containers.resources.limits.memory  }}
               cpu: {{  .Values.containers.resources.limits.cpu }}
-
-
+{{- end }}

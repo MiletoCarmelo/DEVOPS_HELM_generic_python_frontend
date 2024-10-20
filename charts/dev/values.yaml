@@ -1,5 +1,8 @@
 module: trading-strategy-analysis-dev
 
+
+environment: dev  # Default to dev, override in values-prod.yaml
+
 replicas: 1
 # if set to 0 , the pod will not be created during the deployment
 
