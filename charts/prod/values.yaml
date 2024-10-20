@@ -8,7 +8,7 @@ replicas: 1
 technicalSecret: true
 
 containers:
-  image: ghcr.io/miletocarmelo/pods-manager-prod
+  image: ghcr.io/miletocarmelo/pods-manager
   name: frontend
   tags: latest
   ports:
