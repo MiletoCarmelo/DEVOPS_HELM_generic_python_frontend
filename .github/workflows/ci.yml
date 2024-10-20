@@ -77,6 +77,7 @@ jobs:
         git push origin HEAD:main
 
   release-chart:
+    needs: build-and-push-pods-manager-image
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
