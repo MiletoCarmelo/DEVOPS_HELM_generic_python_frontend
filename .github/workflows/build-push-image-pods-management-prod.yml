@@ -9,7 +9,8 @@ env:
   REGISTRY_NAME: ghcr.io
   REGISTRY_USERNAME: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-  IMAGE_NAME: ${{ github.repository }}/build-push-image-pods-management-prod
+  # IMAGE_NAME: ${{ github.repository }}/build-push-image-pods-management-prod
+  IMAGE_NAME: build-push-image-pods-management-dev
   IMAGE_TAG: latest
 
 permissions:
