@@ -1,8 +1,9 @@
-name: Build and Push Pods Management Images
+name: Pods Management Images - Prod
 
 on:
   push:
-    branches: [ prod ]
+    branches: 
+      - prod 
     paths:
       - 'charts/prod/scripts/**'
   workflow_dispatch:
