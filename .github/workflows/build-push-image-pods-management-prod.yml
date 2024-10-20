@@ -3,7 +3,7 @@ name: Pods Management Images - Prod
 on:
   push:
     branches: 
-      - main
+      - prod
 
 env:
   REGISTRY_NAME: ghcr.io
