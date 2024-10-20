@@ -16,7 +16,7 @@ spec:
         app: {{ .Values.module }}-pods
         env: {{ .Values.environment }}
     spec:
-{{- if .Values.technicalSecret }}
+{{- if .Values.technicalSecret }} 
       imagePullSecrets:
         - name: technical-secret
 {{- end}}
