@@ -1,6 +1,7 @@
-module: tradingstrategyanalysis-dev
+module: trading-strategy-analysis-dev
 
 replicas: 1
+# if set to 0 , the pod will not be created during the deployment
 
 containers:
   image: ghcr.io/miletocarmelo/pods-manager-dev:latest
