@@ -1,4 +1,4 @@
-module: dev-tradingstrategyanalysis-v1
+module: tradingstrategyanalysis-prod
 
 replicas: 1
 
