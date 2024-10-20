@@ -24,7 +24,7 @@ jobs:
     - name: Check for prod changes
       id: check_prod
       run: |
-        if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q "^charts/dev/"; then
+        if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q "^charts/prod/"; then
           echo "::set-output name=changed::true"
         fi
 
@@ -35,18 +35,25 @@ jobs:
         context: ./charts/prod/scripts
         file: ./charts/prod/scripts/Dockerfile
         push: true
-        tags: ghcr.io/${{ github.repository_owner }}/build-push-image-pods-management-dev:latest
+        tags: ghcr.io/${{ github.repository_owner }}/build-push-image-pods-management-prod:latest
 
     - name: Update prod Kubernetes resources
       if: steps.check_prod.outputs.changed == 'true'
       run: |
-        sed -i 's|image:.*|image: ghcr.io/${{ github.repository_owner }}/build-push-image-pods-management-dev|' charts/dev/values.yaml
+        sed -i 's|image:.*|image: ghcr.io/${{ github.repository_owner }}/build-push-image-pods-management-prod|' charts/prod/values.yaml
         sed -i 's|tag:.*|tag: latest|' charts/prod/values.yaml
 
-    - name: Commit changes
+
+    - name: Set user for git
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+
+    - name: Commit
+      run: |
         git add charts/prod/values.yaml 
         git commit -m "Update image tags for pods management" || echo "No changes to commit"
+          
+      - name: Push to prod
+      run: |
         git push

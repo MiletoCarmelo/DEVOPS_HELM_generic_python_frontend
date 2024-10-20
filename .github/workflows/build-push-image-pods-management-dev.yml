@@ -42,10 +42,16 @@ jobs:
         sed -i 's|image:.*|image: ghcr.io/${{ github.repository_owner }}/build-push-image-pods-management-dev|' charts/dev/values.yaml
         sed -i 's|tag:.*|tag: latest|' charts/dev/values.yaml
 
-    - name: Commit changes
+    - name: Set user for git
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+
+    - name: Commit
+      run: |
         git add charts/dev/values.yaml 
         git commit -m "Update image tags for pods management" || echo "No changes to commit"
+          
+      - name: Push to prod
+      run: |
         git push
