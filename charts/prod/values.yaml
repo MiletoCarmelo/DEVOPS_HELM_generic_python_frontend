@@ -1,0 +1,39 @@
+module: dev-tradingstrategyanalysis-v1
+
+replicas: 1
+
+containers:
+  image: ghcr.io/miletocarmelo/tradingstrategyanalysis
+  name: frontend
+  tags: latest
+  ports:
+    containerPort: 80
+  resources:
+    requests:
+      memory: "512Mi"  # Updated memory request
+      cpu: "200m"
+    limits:
+      memory: "1024Mi"  # Updated memory limit
+      cpu: "200m"
+
+service:
+   port: 80 # doit etre identique à celui contenu dans le fichier service.yaml
+
+ingress:
+  enable: true
+  metadata:
+    annotations:
+      pathRewrite: /
+#  tls:
+#    annotations:
+#      cert-manager.io/cluster-issuer: nameOfClusterIssuer
+#  host: myhost
+  hosts:
+    - host: myhost  # Change to your desired host
+      paths:
+        - path: /
+          pathType: Prefix
+
+  spec:
+    path: /
+    pathType: Prefix

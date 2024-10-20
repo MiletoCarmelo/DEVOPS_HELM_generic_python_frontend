@@ -9,8 +9,6 @@ helm repo add generic-python-frontend  https://raw.githubusercontent.com/miletoc
 
 # testing : 
 
-helm package DEVOPS_HELM_generic_python_frontend/
-
 
 ➜  carm DEVOPS_HELM_generic_python_frontend git:(prod U:4 ✗) helm template -f Chart.yaml generic-python-frontend .
 
@@ -22,5 +20,10 @@ NAMESPACE: default
 STATUS: deployed
 REVISION: 2
 TEST SUITE: None
+
+➜  carm DEVOPS_HELM_generic_python_frontend git:(prod U:4 ✗) helm package .
+
+
+➜  carm DEVOPS_HELM_generic_python_frontend git:(prod U:4 ✗) helm repo index . --url https://miletocarmelo.github.io/DEVOPS_HELM_generic_python_frontend/
 
 ➜  carm DEVOPS_HELM_generic_python_frontend git:(prod U:4 ✗) helm repo add generic-python-frontend  https://raw.githubusercontent.com/miletocarmelo/DEVOPS_HELM_generic_python_frontend/github-pages

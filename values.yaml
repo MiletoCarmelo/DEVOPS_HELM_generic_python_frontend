@@ -1,47 +1,16 @@
-module: dev-tradingstrategyanalysis-v1
+global:
+  namespace: default
 
-replicas: 1
+dev:
+  image:
+    repository: trading-strategy-analysis
+    tag: "1.0"
+  service:
+    port: 80
 
-containers:
-  image: ghcr.io/miletocarmelo/tradingstrategyanalysis
-  name: frontend
-  tags: latest
-  ports:
-    containerPort: 80
-  resources:
-    requests:
-      memory: "512Mi"  # Updated memory request
-      cpu: "200m"
-    limits:
-      memory: "1024Mi"  # Updated memory limit
-      cpu: "200m"
-
-service:
-   port: 80 # doit etre identique à celui contenu dans le fichier service.yaml
-
-ingress:
-  enable: true
-  metadata:
-    annotations:
-      pathRewrite: /
-#  tls:
-#    annotations:
-#      cert-manager.io/cluster-issuer: nameOfClusterIssuer
-#  host: myhost
-  hosts:
-    - host: myhost  # Change to your desired host
-      paths:
-        - path: /
-          pathType: Prefix
-
-  spec:
-    path: /
-    pathType: Prefix
-
-
-dynamicPod:
-  instanceSuffix: "1"  # Changez ceci pour générer des noms uniques pour vos pods
-
-podManager:
-  image: your-docker-repo/manage-pods  # Remplacez par le nom de votre image
-  tag: latest  # Ou un tag spécifique si nécessaire
+prod:
+  image:
+    repository: trading-strategy-analysis
+    tag: "1.0"
+  service:
+    port: 80
