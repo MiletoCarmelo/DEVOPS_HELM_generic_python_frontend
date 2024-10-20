@@ -4,7 +4,7 @@ replicas: 1
 # if set to 0 , the pod will not be created during the deployment
 
 containers:
-  image: ghcr.io/miletocarmelo/pods-manager-dev:latest
+  image: ghcr.io/miletocarmelo/pods-manager-dev
   name: frontend
   tags: latest
   ports:
@@ -44,5 +44,5 @@ dynamicPod:
   instanceSuffix: "1"  # Changez ceci pour générer des noms uniques pour vos pods
 
 podManager:
-     image: ghcr.io/miletocarmelo/pods-manager-dev:latest
+     image: ghcr.io/miletocarmelo/pods-manager-dev
      tag: latest
