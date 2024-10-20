@@ -9,7 +9,7 @@ env:
   REGISTRY_NAME: ghcr.io
   REGISTRY_USERNAME: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-  IMAGE_NAME: ${{ github.repository }}  # This will be in the format "owner/repo"
+  IMAGE_NAME: ${{ github.repository_owner }}/build-push-image-pods-management-dev
   IMAGE_TAG: latest
 
 permissions:
@@ -52,13 +52,12 @@ jobs:
         context: ./charts/dev/scripts
         file: ./charts/dev/scripts/Dockerfile
         push: true
-        tags: ghcr.io/${{ github.repository_owner }}/build-push-image-pods-management-dev:latest
-        tags: ${{ env.REGISTRY_NAME }}/build-push-image-pods-management-dev:latest
+        tags: ghcr.io/${{ env.IMAGE_NAME }}/:${{ env.IMAGE_TAG }}
 
     - name: Update dev Kubernetes resources
       if: steps.check_dev.outputs.changed == 'true'
       run: |
-        sed -i 's|image:.*|image: ghcr.io/${{ github.repository_owner }}/build-push-image-pods-management-dev|' charts/dev/values.yaml
+        sed -i 's|image:.*|image: ghcr.io/${{ env.IMAGE_NAME }}/:${{ env.IMAGE_TAG }}|' charts/dev/values.yaml
         sed -i 's|tag:.*|tag: latest|' charts/dev/values.yaml
 
     - name: Set user for git
