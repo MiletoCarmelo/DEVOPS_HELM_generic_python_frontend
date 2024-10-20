@@ -55,5 +55,5 @@ ingress:
 #   instanceSuffix: "1"  # Changez ceci pour générer des noms uniques pour vos pods
 
 # podManager:
-#      image: ghcr.io/MiletoCarmelo/build-push-image-pods-management-prod
+#      image: ghcr.io/miletocarmelo/pods-manager
 #      tag: latest
