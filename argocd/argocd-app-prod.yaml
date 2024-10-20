@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: trading-strategy-analysis-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/MiletoCarmelo/DEVOPS_HELM_generic_python_frontend
+    targetRevision: HEAD
+    path: .
+    helm:
+      valueFiles:
+        - values-prod.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
