@@ -1,4 +1,4 @@
-name: Pods Manager Images
+name: CICD
 
 on:
   push:
