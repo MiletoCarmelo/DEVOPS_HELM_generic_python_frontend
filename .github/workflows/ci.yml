@@ -15,11 +15,10 @@ env:
   IMAGE_TAG: latest
 
 permissions:
-  contents: write  # Allows reading files from the repository
   packages: write  # Allows pushing images to the GitHub Container Registry
 
 jobs:
-  build-and-push-pods-manager-image:
+  pods-manager-image:
     runs-on: ubuntu-latest
     steps:
 
@@ -50,21 +49,6 @@ jobs:
         file: ./scripts/Dockerfile
         push: true
         tags: ${{ env.REGISTRY_NAME }}/${{ env.IMAGE_NAME_LOWER }}:${{ env.IMAGE_TAG }}
-
-    - name: Set user for git
-      run: |
-        git config --global user.name "github-actions"
-        git config --global user.email "github-actions@github.com"
-
-    - name: Commit
-      run: |
-        git add charts/dev/values.yaml 
-        git add charts/prod/values.yaml 
-        git commit -m "Update image tags for pods management" || echo "No changes to commit"
-          
-    - name: Push to main
-      run: |
-        git push origin HEAD:main
 
   release-chart:
     needs: build-and-push-pods-manager-image
