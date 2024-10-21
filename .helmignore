@@ -29,3 +29,9 @@
 *.pyc
 __pycache__/
 *.class
+
+# excluding folders for pods-manager image : 
+scripts/
+
+# excluding documentations : 
+documentations/
