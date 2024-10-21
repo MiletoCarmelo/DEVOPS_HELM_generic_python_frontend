@@ -3,16 +3,9 @@ entries:
   generic-python-frontend:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2024-10-20T08:53:21.598963274Z"
-    dependencies:
-    - name: generic-python-frontend-dev
-      repository: file://charts/dev
-      version: 0.1.0
-    - name: generic-python-frontend-prod
-      repository: file://charts/prod
-      version: 0.1.0
-    description: A Helm chart for managing dev and prod environments.
-    digest: 4ead4806bdd74881d3e334b9c7a58ce8f5585366366003a0dff41089c394a786
+    created: "2024-10-21T14:55:30.967916185Z"
+    description: A Helm chart for kubernetes - Generic python frontend
+    digest: e3b4bb308935c9d30808becb1952ba1e3bfacf7e6e338e235a4179812d179779
     name: generic-python-frontend
     type: application
     urls:
@@ -29,4 +22,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/MiletoCarmelo/DEVOPS_HELM_generic_python_frontend/github-pages/trading-strategy-analysis-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-21T14:50:35.108400647Z"
+generated: "2024-10-21T14:55:30.966737327Z"
