@@ -12,8 +12,8 @@ containers:
 
 service:
   type: ClusterIP
-  port: 8080
-  targetPort: http
+  port: 80
+  targetPort: 8080
 
 ingress:
   enabled: true  # Changed from 'enable' to 'enabled' for consistency
