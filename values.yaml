@@ -8,11 +8,11 @@ containers:
   name: python-frontend  # This should match the name in your deployment template
   tags: latest
   ports:
-    containerPort: http # This should be the port your app listens on (http : 80, https : 443)
+    containerPort: 80 # This should be the port your app listens on (http : 80, https : 443)
 
 service:
   type: ClusterIP
-  port: http
+  port: 8080
   targetPort: http
 
 ingress:
