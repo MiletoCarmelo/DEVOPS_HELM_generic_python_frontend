@@ -15,6 +15,7 @@ env:
   IMAGE_TAG: latest
 
 permissions:
+  contents: read
   packages: write  # Allows pushing images to the GitHub Container Registry
 
 jobs:
