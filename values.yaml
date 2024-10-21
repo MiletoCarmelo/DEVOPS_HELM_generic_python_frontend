@@ -1,16 +1,30 @@
-global:
-  namespace: default
+module: pods-manager
 
-dev:
-  image:
-    repository: trading-strategy-analysis-dev
-    tag: "1.0"
-  service:
-    port: 80
+replicas: 1
 
-prod:
-  image:
-    repository: trading-strategy-analysi-prod
-    tag: "1.0"
-  service:
-    port: 80
+
+containers:
+  image: ghcr.io/miletocarmelo/pods-manager
+  name: python-frontend  # This should match the name in your deployment template
+  tags: latest
+  ports:
+    containerPort: http # This should be the port your app listens on (http : 80, https : 443)
+
+service:
+  type: ClusterIP
+  port: http
+  targetPort: http
+
+ingress:
+  enabled: true  # Changed from 'enable' to 'enabled' for consistency
+  metadata:
+    annotations:
+      pathRewrite: /
+  # tls:
+  #   enabled: true
+  #   annotations:
+  #     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  # host: myhost  # Moved this out of 'hosts' array for simplicity
+  spec:
+    path: /
+    pathType: Prefix

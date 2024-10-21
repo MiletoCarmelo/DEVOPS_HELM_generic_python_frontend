@@ -1,9 +1,0 @@
-dependencies:
-- name: dev
-  repository: file://charts/dev
-  version: 0.1.0
-- name: prod
-  repository: file://charts/prod
-  version: 0.1.0
-digest: sha256:5a0bb9a90a21b57f446feca6c966bb9facfd81e1e2e21494b4c621bdeea0a997
-generated: "2024-10-20T15:19:16.789041362+02:00"
