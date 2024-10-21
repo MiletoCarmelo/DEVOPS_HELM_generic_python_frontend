@@ -64,9 +64,7 @@ jobs:
           branch: ${{ env.BRANCH_PAGES }}
           charts_url: https://raw.githubusercontent.com/${{ github.repository }}/${{ env.BRANCH_PAGES }}
           linting: false
-          allow_overwrite: true
-          update_existing: true
-
+          
       - name: summary 
         run: echo "https://raw.githubusercontent.com/${{ github.repository }}/${{ env.BRANCH_PAGES }}"
       
