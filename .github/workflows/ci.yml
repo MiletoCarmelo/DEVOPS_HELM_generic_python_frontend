@@ -51,7 +51,7 @@ jobs:
         tags: ${{ env.REGISTRY_NAME }}/${{ env.IMAGE_NAME_LOWER }}:${{ env.IMAGE_TAG }}
 
   release-chart:
-    needs: build-and-push-pods-manager-image
+    needs: pods-manager-image
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
