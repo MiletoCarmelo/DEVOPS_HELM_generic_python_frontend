@@ -1,10 +1,10 @@
-module: pods-manager
+module: pod-manager
 
 replicas: 1
 
 
 containers:
-  image: ghcr.io/miletocarmelo/pods-manager
+  image: ghcr.io/miletocarmelo/pod-manager
   name: python-frontend  # This should match the name in your deployment template
   tags: latest
   ports:
