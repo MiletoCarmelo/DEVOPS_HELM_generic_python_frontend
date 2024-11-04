@@ -1,14 +1,6 @@
-module: pod-manager
+module: python-frontend
 
 replicas: 1
-
-
-containers:
-  image: ghcr.io/miletocarmelo/pod-manager
-  name: python-frontend  # This should match the name in your deployment template
-  tags: latest
-  ports:
-    containerPort: 80 # This should be the port your app listens on (http : 80, https : 443)
 
 service:
   type: ClusterIP
