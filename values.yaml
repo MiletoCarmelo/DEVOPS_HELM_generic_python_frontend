@@ -1,4 +1,4 @@
-module: python-frontend
+module: nopod
 
 replicas: 1
 
