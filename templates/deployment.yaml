@@ -18,6 +18,7 @@ spec:
       imagePullSecrets:
         - name: technical-secret
 {{- end}}
+{{- if .Values.container }}
       containers:
         - name: {{ .Values.containers.name }}
           image: {{ .Values.containers.image }}:{{.Values.containers.tags}}
@@ -37,4 +38,5 @@ spec:
             limits:
               memory: {{ .Values.containers.resources.limits.memory  }}
               cpu: {{  .Values.containers.resources.limits.cpu }}
+{{- end }}
 {{- end }}
