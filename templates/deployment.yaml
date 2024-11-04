@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   labels:
     {{-  include "label-generator" . | nindent 4 }}
-  name: {{ .Values.module }}-deployment
+  name: {{ .Values.environment }}-{{ .Values.module }}-deployment
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.module }}-pod
+      app: {{ .Values.environment }}-{{ .Values.module }}-pod
   template:
     metadata:
       labels:
-        app: {{ .Values.module }}-pod
+        app: {{ .Values.environment }}-{{ .Values.module }}-pod
     spec:
 {{- if .Values.technicalSecret }}
       imagePullSecrets:
