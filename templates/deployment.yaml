@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     {{-  include "label-generator" . | nindent 4 }}
+    module: {{ .Values.module }}
   name: {{ .Values.environment }}-{{ .Values.module }}-deployment
 spec:
   replicas: {{ .Values.replicas }}
