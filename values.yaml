@@ -1,5 +1,5 @@
-module: nopod
-environment: generic
+# module: nopod
+# environment: generic
 replicas: 1
 service:
   type: ClusterIP
