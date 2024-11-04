@@ -1,14 +1,10 @@
 module: nopod
-
 environment: generic
-
 replicas: 1
-
 service:
   type: ClusterIP
   port: 80
   targetPort: 80
-
 ingress:
   enabled: true  # Changed from 'enable' to 'enabled' for consistency
   metadata:

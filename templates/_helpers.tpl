@@ -7,7 +7,7 @@ TODO check if empty .value.Module
 app.kubernetes.io/component: frontend-python-{{ .Values.environment }}-{{.Values.module}}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-app.kubernetes.io/name: {{.Release.Name}}-{{ .Values.environment }}-{{.Values.module}}
+app.kubernetes.io/name: {{ .Values.environment }}-{{.Values.module}}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "-" }}
 {{- else -}}
