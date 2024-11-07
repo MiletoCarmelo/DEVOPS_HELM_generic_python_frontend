@@ -9,11 +9,11 @@ spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.environment }}-{{ .Values.module }}-pod
+      app: {{ .Values.environment }}-{{ .Values.module }}
   template:
     metadata:
       labels:
-        app: {{ .Values.environment }}-{{ .Values.module }}-pod
+        app: {{ .Values.environment }}-{{ .Values.module }}
     spec:
 {{- if .Values.technicalSecret }}
       imagePullSecrets:
