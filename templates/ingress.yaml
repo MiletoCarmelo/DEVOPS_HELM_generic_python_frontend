@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   labels:
     {{- include "label-generator" . | nindent 4 }}
-  name: {{ .Values.environment }}-{{ .Values.module }}-ingress
+  name: {{ .Values.module }}-{{ .Values.environment }}-ingress
   annotations:
     {{- toYaml .Values.ingress.metadata.annotations | nindent 4 }}
 {{- if .Values.ingress.tls }}
@@ -25,7 +25,7 @@ spec:
             pathType: {{ .Values.ingress.spec.pathType }}
             backend:
               service:
-                name: {{ .Values.environment }}-{{ .Values.module }}-service
+                name: {{ .Values.module }}-{{ .Values.environment }}-service
                 port: 
                   name: http
 {{- else }}
@@ -35,7 +35,7 @@ spec:
             pathType: {{ .Values.ingress.spec.pathType }}
             backend:
               service:
-                name: {{ .Values.environment }}-{{ .Values.module }}-service
+                name: {{ .Values.module }}-{{ .Values.environment }}-service
                 port: 
                   name: http
 {{- end }}
