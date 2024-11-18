@@ -4,22 +4,21 @@ metadata:
   name: {{ .Values.module }}-{{ .Values.environment }}-deployment
   labels:
     {{- include "label-generator" . | nindent 4 }}
-    module: {{ .Values.module }}
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{.Values.module}}-{{ .Values.environment }}
+      app: {{ .Values.module }}-{{ .Values.environment }}
   template:
     metadata:
       labels:
+        app: {{ .Values.module }}-{{ .Values.environment }}
         {{- include "label-generator" . | nindent 8 }}
     spec:
       {{- if .Values.technicalSecret }}
       imagePullSecrets:
         - name: technical-secret
-      {{- end}}
-      {{- if .Values.containers }}
+      {{- end }}
       containers:
         - name: {{ .Values.containers.name }}
           image: {{ .Values.containers.image }}:{{ .Values.containers.tags }}
@@ -27,17 +26,11 @@ spec:
           imagePullPolicy: Always
           {{- else }}
           imagePullPolicy: IfNotPresent
-          {{- end}}
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.containers.ports.containerPort }}
           {{- if .Values.containers.resources }}
           resources:
-            requests:
-              memory: {{ .Values.containers.resources.requests.memory }}
-              cpu: {{ .Values.containers.resources.requests.cpu }}
-            limits:
-              memory: {{ .Values.containers.resources.limits.memory }}
-              cpu: {{ .Values.containers.resources.limits.cpu }}
+            {{- toYaml .Values.containers.resources | nindent 12 }}
           {{- end }}
-      {{- end }}
