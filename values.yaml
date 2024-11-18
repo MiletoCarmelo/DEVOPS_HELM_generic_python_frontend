@@ -18,5 +18,3 @@ ingress:
   spec:
     path: /
     pathType: Prefix
-containers:
-  name: generic
